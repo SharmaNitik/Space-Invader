@@ -1,9 +1,9 @@
-import pygame, random, math, player
+import pygame, random, math
 from pygame import mixer
 #initialising pygame
 pygame.init()
 #initialising display
-screenX = 1200
+screenX = 800
 screenY= 600
 screen = pygame.display.set_mode((screenX, screenY))
 
@@ -39,7 +39,11 @@ def collision(enemyX, bulletX, enemyY, bulletY):
     else:
         return False
 
-
+#initial coordinates of player to screen
+playerimg = pygame.image.load("player.png")
+playerX = screenX/2
+playerY = screenY-64
+playerX_change = 0
 
 #initial coordinates of enemy to screen
 enemyX = random.randint(0,screenX-64)
@@ -82,7 +86,7 @@ while(running):
                     fire = "unready"
                     bulletSound = mixer.Sound("laser.wav")
                     bulletSound.play()
-                    bulletX = playerX
+                    bulletX = playerX + 17
                     bulletY =  screenY * 0.9 + 20
                     bulletY_change = -20
 
